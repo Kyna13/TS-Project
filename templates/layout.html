@@ -15,29 +15,29 @@
     </head>
     <body>         
         <nav>
-            <div class="nav_mobile_container">
-            <h1 id="nav_title"></h1>
-            <button class="toggler" id="toggler" type="button">
-                <div class="toggler_part"></div>
-                <div class="toggler_part"></div>
-                <div class="toggler_part"></div>
-            </button>
+            <div class="nav_container">
+                <div class="nav_icon">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/logo.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('profile') }}"><img src="{{ url_for('static', filename='images/nav/home.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('post') }}"><img src="{{ url_for('static', filename='images/nav/add.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/shop.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/people.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/hat.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('signout') }}"><img src="{{ url_for('static', filename='images/nav/signout.png') }}" ></img></a>
+                </div>
             </div>
-            <ul type="square" id="nav_menu">
-
-                <li id="home_link"><a href = "{{ url_for('index') }}" class="nav_link">Home</a></li>    
-
-                {% if login == "0" %}
-                <li id="register_link"><a href = "{{ url_for('register') }}" class="nav_link">Register</a></li>
-                <li id="login_link"><a href = "{{ url_for('signin') }}" class="nav_link">Sign in</a></li>
-                {% endif %}
-
-                {% if login == "1" %}
-                <li id="register_link"><a href = "{{ url_for('profile') }}" class="nav_link">Profile</a></li>
-                <li id="login_link"><a href = "{{ url_for('signout') }}" class="nav_link">Signout</a></li>
-                {% endif %}
-
-            </ul>
         </nav>
 
         {% block content %}
