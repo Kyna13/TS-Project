@@ -1,0 +1,44 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <title>Signin</title>
+    <style></style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="conformation_title"  id="conformation_title">{{ registration_complete_text }}</h1>
+    <p class="conformation_text" id="conformation_text">{{ registration_complete_text }}</p>
+
+    <div class="login_container" id="register_box">
+        <h2 class="register_title login_title">Signin</h2>
+        <form  method="POST" action = "" enctype = "multipart/form-data">
+            {{ signin_form.hidden_tag() }}
+            <div class="input">
+                <label>Username: </label>
+                {{ signin_form.username(class="input_field", placeholder="") }}
+            </div>
+            <div class="input">
+                <label>Password: </label>
+                {{ signin_form.password(class="input_field", placeholder="") }}
+            </div>
+            {{ signin_form.submit(class="login_btn") }}
+        </form>
+    </div>
+</div>
+<div id="login_background"></div>
+{% for error in errors_lst %}
+    <p class="errors">{{ error }}</p>
+{% endfor %}
+    <script>
+        if (document.getElementById("conformation_text").innerHTML != ""){
+            document.getElementById("register_box").style.display = "none";
+            errors = document.getElementsByClassName("errors");
+            for (i = 0; i < errors.length; i++) {
+                errors[i].style.display = "none";
+            }
+            document.getElementById("conformation_button").style.display = "block";
+            document.getElementById("conformation_title").style.display = "block";
+            document.getElementById("conformation_text").style.display = "block";
+        }
+    </script>
+{% endblock %}

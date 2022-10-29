@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <title>Community</title>
+    <style>
+        .post{
+            width: 100px;
+            height: 100px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        .post_container{
+            max-width: 600px;
+            text-align: center;
+            background-color: cyan;
+            padding: 10px;
+            border: 0px black solid;
+            border-radius: 10px;
+            margin: 20px;
+        }
+
+        p{
+            margin-bottom: 10px
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div style="display: flex">
+        {% for dct in rows %}
+        <div class="post_container">
+            <div class="post" style="background-image: url({{ dct['post'] }});"></div>
+            <h1>Title: {{ dct['title'] }}</h1>
+            <p>Description: {{ dct['description'] }}</p>
+            <p>Tags: {{ dct['tags'] }}</p>
+            <p>Owner: {{ dct['owner'] }}</p>
+            <p>Price: {{ dct['price'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+    
+    <script>
+        if (document.getElementById("conformation_text").innerHTML != ""){
+            document.getElementById("register_box").style.display = "none";
+            errors = document.getElementsByClassName("errors");
+            for (i = 0; i < errors.length; i++) {
+                errors[i].style.display = "none";
+            }
+            document.getElementById("conformation_button").style.display = "block";
+            document.getElementById("conformation_title").style.display = "block";
+            document.getElementById("conformation_text").style.display = "block";
+        }
+    </script>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <title>{{ username }}</title>
+    <style>
+        .pfp{
+            width: 100px;
+            height: 100px;
+            background-image: url('{{ pfp }}');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        p{
+            margin-bottom: 10px
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="pfp" style=""></div>
+    <h1>{{ username }}</h1>
+    <p>Name: {{ name }}</p>
+    <p>Email: {{ email }}</p>
+    <p>Password: {{ password }}</p>
+    <p>Qualifications: {{ qualifications }}</p>
+    <p>Interests: {{ interests }}</p>
+    <p>Plan: {{ plan }}</p>
+    
+{% for error in errors_lst %}
+    <p class="errors">{{ error }}</p>
+{% endfor %}
+    <script>
+        if (document.getElementById("conformation_text").innerHTML != ""){
+            document.getElementById("register_box").style.display = "none";
+            errors = document.getElementsByClassName("errors");
+            for (i = 0; i < errors.length; i++) {
+                errors[i].style.display = "none";
+            }
+            document.getElementById("conformation_button").style.display = "block";
+            document.getElementById("conformation_title").style.display = "block";
+            document.getElementById("conformation_text").style.display = "block";
+        }
+    </script>
+{% endblock %}
