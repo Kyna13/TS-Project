@@ -2,34 +2,33 @@ from flask import Flask, render_template, redirect, url_for, session, request
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField
 import email_validator
-from wtforms.validators import Length, EqualTo, Email, Required
+from wtforms.validators import Length, EqualTo, Email, InputRequired
 from passlib.handlers.sha2_crypt import sha256_crypt
 from database_script import view_posts, view_userinfo
 import database_script
-import os
 from werkzeug.utils import secure_filename
 
 class RegisterationForm(FlaskForm):
-    username = StringField('User Name: ', validators = [Required(), Length(min=2, max=50)])
-    name = StringField('Name: ', validators = [Required(), Length(min=2, max=100)])
-    email = StringField('Email Address: ', validators = [Required(), Email()])
+    username = StringField('User Name: ', validators = [InputRequired(), Length(min=2, max=50)])
+    name = StringField('Name: ', validators = [InputRequired(), Length(min=2, max=100)])
+    email = StringField('Email Address: ', validators = [InputRequired(), Email()])
     qualifications = StringField('Qualifications: ', validators = [Length(max=300)])
     interests = StringField('Qualifications: ', validators = [Length(max=300)])
-    confirm_password = PasswordField('Confirm Password: ', validators=[Required()])
-    password = PasswordField('Password: ', validators = [Required(), Length(min=6), EqualTo('confirm_password')])
+    confirm_password = PasswordField('Confirm Password: ', validators=[InputRequired()])
+    password = PasswordField('Password: ', validators = [InputRequired(), Length(min=6), EqualTo('confirm_password')])
     submit = SubmitField("Sign Up")
 
 class SigninForm(FlaskForm):
-    username = StringField('Username: ', validators = [Required(), Length(min=2, max=50)])
-    password = PasswordField('Password: ', validators = [Required(), Length(min=6)])
+    username = StringField('Username: ', validators = [InputRequired(), Length(min=2, max=50)])
+    password = PasswordField('Password: ', validators = [InputRequired(), Length(min=6)])
     submit = SubmitField("Sign In")
 
 class searchForm(FlaskForm):
-    search = StringField('Filter: ', validators = [Required(), Length(max=20)])
+    search = StringField('Filter: ', validators = [InputRequired(), Length(max=20)])
     submit = SubmitField("Filter")
 
 class PostForm(FlaskForm):
-    title = StringField('Title: ', validators = [Required(), Length(min=2, max=50)])
+    title = StringField('Title: ', validators = [InputRequired(), Length(min=2, max=50)])
     description = StringField('Description: ', validators = [Length(max=300)])
     tags = StringField('Tags: ', validators = [Length(max=300)])
     # sell = StringField('To Be Sold or Not: ', validators = [Length(max=300)])

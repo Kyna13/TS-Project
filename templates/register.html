@@ -43,7 +43,8 @@
             </div>
     
             <div class="input">
-                <input type = "file" name = "pfp" accept=".png,.jpg,.jpeg" required/>
+                <label for="pfp" class="btn">Select Profile Picture Here</label>
+                <input id="pfp" type = "file" name = "pfp" accept=".png,.jpg,.jpeg" style="visibility:hidden;" required/>
             </div>
 
             {{ register_form.submit(class="login_btn") }}
