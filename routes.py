@@ -49,27 +49,11 @@ drone_image_list=["3D_Robotics_Solo.jpg", "DJI_Inspire_1_Pro.jpg", "DJI_Mavic_2_
 
 @app.route('/')
 def index_start():
-    login = "0"
-    try:
-        if session["Username"] != None:
-            login = "1"
-        else:
-            login="0"
-    except:
-        login = "0"
-    return redirect(url_for("index", login=login))
+    return community()
 
 @app.route('/index')
 def index():
-    login = "0"
-    try:
-        if session["Username"] != None:
-            login = "1"
-        else:
-            login="0"
-    except:
-        login = "0"
-    return render_template("index.html", login=login)
+    return community()
 
 @app.route('/register', methods=["POST", "GET"])
 def register():
@@ -269,4 +253,4 @@ def signout():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=1111)
+    app.run(debug=True, port=1111, host="0.0.0.0")
