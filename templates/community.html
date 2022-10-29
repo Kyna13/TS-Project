@@ -3,43 +3,66 @@
     <title>Community</title>
     <style>
         .post{
-            width: 100px;
-            height: 100px;
+            width: 490px;
+            height: 300px;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            z-index: 1;
         }
 
         .post_container{
-            max-width: 600px;
+            position: relative;
+            height: 400px;
+            width: 500px;
             text-align: center;
-            background-color: cyan;
-            padding: 10px;
             border: 0px black solid;
-            border-radius: 10px;
-            margin: 20px;
+            border-radius: 5px;
+            z-index: 0;
         }
 
-        p{
-            margin-bottom: 10px
+        .image_text {
+            text-align: center;
+            height: 100px;
+            width: 490px;
+            position: absolute;
+            visibility: hidden;
+            color: #00000077;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .post_container:hover .image_text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .container {
+            width: 796%;
+            margin-top: 110px;
+            margin-left: 5%;
+            margin-right: 5%;
+            padding: 1% 1%;
         }
     </style>
 {% endblock %}
 
 {% block content %}
 <div class="container">
-
     <div style="display: flex">
-        {% for dct in rows %}
+    {% for dct in rows %}
         <div class="post_container">
-            <div class="post" style="background-image: url({{ dct['post'] }});"></div>
-            <h1>Title: {{ dct['title'] }}</h1>
-            <p>Description: {{ dct['description'] }}</p>
-            <p>Tags: {{ dct['tags'] }}</p>
-            <p>Owner: {{ dct['owner'] }}</p>
-            <p>Price: {{ dct['price'] }}</p>
+            <div class="post" style="background-image: url({{ dct['post'] }});">
+                <div class="image_text">
+                    Title: {{ dct['title'] }}
+                    <br>
+                    Description: {{ dct['description'] }}
+                    <br>
+                    Price: {{ dct['price'] }}
+                </div>
+            </div>    
         </div>
-        {% endfor %}
+    {% endfor %}
     </div>
 
 </div>
