@@ -41,50 +41,34 @@ body{
 
 /* Nav bar styling start */
 
-nav{
-    background-color: #03425e;
-    height: fit-content;
-    width: 80%;
-    color: #ffffff;
-    display: inline-block;
-    display: flex;
-    justify-content: space-between;
-    padding-right: 10%;
-    padding-left: 10%;
+.nav_container{
+    height: 100vh;
     position: fixed;
-    top: 0%;
-    z-index: 10;
-    box-shadow: 0px 10px 8px #494949;
+    top: 0px;
+    left: 0px;
+    width: 55px;
+    padding: 10px 7.5px 10px 7.5px;
+    background-color: #2C2C2C;
 }
 
-#nav_menu{
-    display: flex;
-    flex-direction: row;
-    margin: 0;
-    list-style: none;
+.nav_icon{
+    margin-bottom: 30px;
 }
 
-.nav_link{
-    color: #ffffff;
-    font-size: 13px;
-    padding: 29px 30px;
-    display: inline-block;
-    font-style: normal;
-    text-decoration: none;
+.nav_icon img{
+    display: block;
+    width: 40px;
+    height: 40px;
+    margin: 0 auto;
 }
 
-.nav_link:hover{
-    background-color:darkslateblue;
+.nav_icon img:hover{
+    border: 0px solid black;
+    box-shadow: 0px 0px 10px #000000;
 }
 
-#nav_title{
-    width: fit-content;
-    float: left;
-    margin: 18px 30px 25px 30px;
-    font-size: 25px;
-    font-weight: 350;
-    color: #ffffff;
-}
+
+
 
 .toggler{
     margin-top: 22px;
@@ -102,15 +86,11 @@ nav{
 .toggler_part{
     width: 40px;
     height: 5px;
+    margin-bottom: 5px;
     display: block;
     background: #ffffff;
 }
 
-.nav_mobile_container{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
 
 @media (max-width: 991px) {
     nav{
@@ -164,8 +144,8 @@ nav{
     margin: 20px;
 }
 
-#login_background{
-    background-image: url('../../static/images/login_background.jpg');
+.background{
+    background-image: url('../../static/images/bg.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -181,16 +161,22 @@ nav{
 
 .login_container{
     position: relative;
-    margin: 0 auto;
-    max-width: 40%;
+    margin: auto;
+    max-width: 70%;
+    height: fit-content;
     width: auto;
-    padding: 20px 10%;
+    /* padding: 20px 10%; */
     background-color: #ffffff;
-    color: #171717;
+    color: #2C2C2C;
     border: 0px solid #ffffff;
-    box-shadow: 0px 0px 10px #171717;
-    border-radius: 30px;
+    /* box-shadow: 0px 0px 10px #2C2C2C;
+    border-radius: 30px; */
     z-index: 1;
+}
+
+.right{
+    margin: 0 auto;
+    padding: 50px 0;
 }
 
 .login_title{
@@ -201,7 +187,7 @@ nav{
 
 .input{
     border: 0px solid #ffffff;
-    color: #171717;
+    color: #2C2C2C;
     padding: 10px 7%;
     margin: 0 auto;
     display: flex;
@@ -210,12 +196,25 @@ nav{
     max-width: 300px;
 }
 
+
+.login_container{
+    display: flex;
+}
+
+.image_side{
+    background-image: url('../../static/images/side.png'); 
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 50%;
+}
+
 .login_btn{
     margin-right: 35%;
     margin-left: 35%;
     margin-top: 35px;
     margin-bottom: 20px;
-    background-color: #171717;
+    background-color: #2C2C2C;
     border: 0px solid #ffffff;
     padding: 7px 20px 7px 20px;
     color: #ffffff;
@@ -229,7 +228,7 @@ nav{
 }
 
 .input_field{
-    background-color: #171717;
+    background-color: #2C2C2C;
     color: #ffffff;
     border-radius: 3px;
     width: 100%;
@@ -241,10 +240,15 @@ nav{
     box-shadow: 2px 2px 5px #03425e;
 }
 
+@media (min-width: 768px) and (max-width: 1200px) {
+    .login_container{
+        max-width: 90%;
+    }
+}
+
 @media (min-width: 567px) and (max-width: 768px) {
     .login_container{
-        max-width: 60%;
-        padding: 20px 5%;
+        max-width: 100%;
     }
     .login_btn{
         margin-left: 30%;
@@ -255,8 +259,10 @@ nav{
 
 @media (max-width: 567px) {
     .login_container{
-        max-width: 90%;
-        padding: 20px 2.5%;
+        width: 100%;
+    }
+    .image_side{
+        display: none;
     }
     .login_btn{
         margin-left: 25%;
@@ -305,7 +311,7 @@ nav{
     font-size: 15px;
     text-decoration: none;
     padding: 10px 15px;
-    border: 0px solid #171717;
+    border: 0px solid #2C2C2C;
     border-radius: 3px;
     color: #ffffff;
     width: fit-content;
