@@ -6,17 +6,18 @@
 }
 
 .container{
-    background-color: #ffffff;
+    background-color: #171717;
     width: 76%;
     margin-top: 110px;
     margin-left: 10%;
     margin-right: 10%;
     padding: 2% 2%;
     z-index: 1;
+    color: #ffffff;
 }
 
 body{
-    background-color: #ffffff;
+    background-color: #171717;
 }
 
 /* width */

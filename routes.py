@@ -150,7 +150,7 @@ def profile():
         return render_template("profile.html", login = "1", pfp = pfp, username = username, name = name, email = email, password = password, qualifications = qualifications, interests = interests, plan = plan)
     else:
         signin_form = SigninForm()
-        return render_template("login.html", login = "0", signin_form = signin_form)
+        return render_template("login.html", login = "0")
 
 @app.route('/post', methods=["POST", "GET"])
 def post():
