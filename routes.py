@@ -21,7 +21,7 @@ class RegisterationForm(FlaskForm):
 class SigninForm(FlaskForm):
     username = StringField('Username: ', validators = [InputRequired(), Length(min=2, max=50)])
     password = PasswordField('Password: ', validators = [InputRequired(), Length(min=6)])
-    submit = SubmitField("Sign In")
+    submit = SubmitField("Log In")
 
 class searchForm(FlaskForm):
     search = StringField('Filter: ', validators = [InputRequired(), Length(max=20)])
@@ -40,12 +40,6 @@ app.config["SECRET_KEY"] = ''
 app.config.from_pyfile('config.py')
 username = ""
 user_level = 0
-
-drone_image_list=["3D_Robotics_Solo.jpg", "DJI_Inspire_1_Pro.jpg", "DJI_Mavic_2_Pro.jpg"
-            , "DJI_Matrice_200.jpg", "DJI_Mavic_2_Zoom.jpg", "DJI_Mavic_Air.jpg"
-            , "DJI_Mavic_Pro.jpg", "DJI_Phantom_3_Professional.jpg", "DJI_Phantom_4.jpg"
-            , "DJI_Spreading_Wings-S900.jpg", "Flyability_Elios_Drone.jpg", "Yuneec_H520.jpg"
-            , "Yuneec_Mantis_Q.jpg"]
 
 @app.route('/')
 def index_start():
@@ -128,30 +122,35 @@ def signin():
 
 @app.route('/profile', methods=["POST", "GET"])
 def profile():
-    profile = []
-    username = session["Username"]
-    rows = database_script.view_userinfo()
-    for row in rows:
-        if row[2] == username:
-            profile = row
-    
-    print(profile)
-    # print('\\'.join(profile[1].split("\\")[1:]))
-    # pfp = url_for('static',filename='\\'.join(profile[1].split("\\")[1:]))
-    # print(pfp)
-    pfp = '/'.join(profile[1].split("\\"))
-    print(pfp)
-    username = profile[2]
-    name = profile[3]
-    email = profile[4]
-    password = profile[5]
-    qualifications = profile[6]
-    interests = profile[7]
-    plan = profile[8].title()
+    if session["Username"] != None:
 
-    # have to put posts and bought sold also here
-    # Option to choose the plan
-    return render_template("profile.html", login = "1", pfp = pfp, username = username, name = name, email = email, password = password, qualifications = qualifications, interests = interests, plan = plan)
+        profile = []
+        username = session["Username"]
+        rows = database_script.view_userinfo()
+        for row in rows:
+            if row[2] == username:
+                profile = row
+        
+        print(profile)
+        # print('\\'.join(profile[1].split("\\")[1:]))
+        # pfp = url_for('static',filename='\\'.join(profile[1].split("\\")[1:]))
+        # print(pfp)
+        pfp = '/'.join(profile[1].split("\\"))
+        print(pfp)
+        username = profile[2]
+        name = profile[3]
+        email = profile[4]
+        password = profile[5]
+        qualifications = profile[6]
+        interests = profile[7]
+        plan = profile[8].title()
+
+        # have to put posts and bought sold also here
+        # Option to choose the plan
+        return render_template("profile.html", login = "1", pfp = pfp, username = username, name = name, email = email, password = password, qualifications = qualifications, interests = interests, plan = plan)
+    else:
+        signin_form = SigninForm()
+        return render_template("login.html", login = "0", signin_form = signin_form)
 
 @app.route('/post', methods=["POST", "GET"])
 def post():
@@ -212,7 +211,7 @@ def post():
         return render_template("post.html", login = "1", post_form = post_form, errors_lst = errors_lst)
 
     else:
-        return render_template("index.html", login = "0")
+        return render_template("community.html", login = "0")
 
 
 @app.route('/community', methods=["POST", "GET"])
@@ -249,7 +248,7 @@ def community():
 @app.route('/signout')
 def signout():
     session["Username"] = None
-    return render_template("index.html", login="0")
+    return render_template("community.html", login="0")
 
 
 if __name__ == "__main__":
