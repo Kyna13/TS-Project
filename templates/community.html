@@ -3,7 +3,7 @@
     <title>Community</title>
     <style>
         .post{
-            width: 490px;
+            width: 440px;
             height: 300px;
             background-position: center;
             background-repeat: no-repeat;
@@ -14,17 +14,17 @@
         .post_container{
             position: relative;
             height: 400px;
-            width: 500px;
+            width: 450px;
             text-align: center;
             border: 0px black solid;
-            border-radius: 5px;
+            border-radius: 10px;
             z-index: 0;
         }
 
         .image_text {
             text-align: center;
             height: 100px;
-            width: 490px;
+            width: 440px;
             position: absolute;
             visibility: hidden;
             color: #00000077;
@@ -37,22 +37,28 @@
             opacity: 1;
         }
 
-        .container {
-            width: 796%;
+        .container{
+            background-color: #ffffff;
+            width: 80%;
             margin-top: 110px;
             margin-left: 5%;
             margin-right: 5%;
             padding: 1% 1%;
+            z-index: 1;
         }
     </style>
 {% endblock %}
 
 {% block content %}
 <div class="container">
-    <div style="display: flex">
+
+    <div style="display: flex;">
     {% for dct in rows %}
-        <div class="post_container">
-            <div class="post" style="background-image: url({{ dct['post'] }});">
+        {% if dct['index'] % 3 == 0: %}
+        {% endif %}
+
+            <div class="post_container" style="float:left">
+                <div class="post" style="background-image: url({{ dct['post'] }});">
                 <div class="image_text">
                     Title: {{ dct['title'] }}
                     <br>
@@ -60,9 +66,11 @@
                     <br>
                     Price: {{ dct['price'] }}
                 </div>
-            </div>    
-        </div>
+                </div>    
+            </div>
+
     {% endfor %}
+    </div>
     </div>
 
 </div>

@@ -228,12 +228,14 @@ def community():
     rows = view_posts()
     print(rows)
     lst = []
+    i = -1
     for row in rows:
+        i += 1
         if row[7] == "yes":
-            lst.append({"post": row[1], "owner": row[2], "title": row[3], "description": row[4], "tags": row[5], "price": row[8]})
+            lst.append({"index": i, "post": row[1], "owner": row[2], "title": row[3], "description": row[4], "tags": row[5], "price": row[8]})
         elif row[7] == "no":
-            lst.append({"post": row[1], "owner": row[2], "title": row[3], "description": row[4], "tags": row[5], "price": "Not for sale"})
-
+            lst.append({"index": i, "post": row[1], "owner": row[2], "title": row[3], "description": row[4], "tags": row[5], "price": "Not for sale"})
+        
         # lst.append({"post": row[1], "owner": row[2], "title": row[3], "description": row[4], "tags": row[5], "price": "Not for sale"})
 
     print(lst)
