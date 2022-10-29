@@ -1,7 +1,15 @@
 {% extends 'layout.html' %}
 {% block head %}
-    <title>Signin</title>
-    <style></style>
+    <title>Login</title>
+    <style>
+        .container{
+            margin-top: 20px;
+        }
+
+        nav{
+            display: none;
+        }
+    </style>
 {% endblock %}
 
 {% block content %}
@@ -10,22 +18,26 @@
     <p class="conformation_text" id="conformation_text">{{ registration_complete_text }}</p>
 
     <div class="login_container" id="register_box">
-        <h2 class="register_title login_title">Signin</h2>
-        <form  method="POST" action = "" enctype = "multipart/form-data">
-            {{ signin_form.hidden_tag() }}
-            <div class="input">
-                <label>Username: </label>
-                {{ signin_form.username(class="input_field", placeholder="") }}
-            </div>
-            <div class="input">
-                <label>Password: </label>
-                {{ signin_form.password(class="input_field", placeholder="") }}
-            </div>
-            {{ signin_form.submit(class="login_btn") }}
-        </form>
+        <div class="part image_side"></div>
+        <div class="part right">
+            <h2 class="register_title login_title">Login</h2>
+            <form  method="POST" action = "" enctype = "multipart/form-data">
+                {{ signin_form.hidden_tag() }}
+                <div class="input">
+                    <label>Username: </label>
+                    {{ signin_form.username(class="input_field", placeholder="") }}
+                </div>
+                <div class="input">
+                    <label>Password: </label>
+                    {{ signin_form.password(class="input_field", placeholder="") }}
+                </div>
+                    {{ signin_form.submit(class="login_btn") }}
+            </form>
+            <p>Don't have an account? <a href="{{ url_for("register", login="0") }}">Register now!</a></p>
+        </div>
     </div>
 </div>
-<div id="login_background"></div>
+<div class="background"></div>
 {% for error in errors_lst %}
     <p class="errors">{{ error }}</p>
 {% endfor %}
