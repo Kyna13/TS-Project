@@ -4,10 +4,24 @@
     <style>
         .container{
             margin-top: 20px;
+            width: 90%;
+            margin: 20px auto;
         }
 
         nav{
             display: none;
+        }
+
+        p{
+            margin: 15px auto; max-width: 65%; font-size: 15px; width: fit-content;
+        }
+
+        label{
+            display: none;
+        }
+
+        a{
+            text-decoration: none; color: #BD01FF;
         }
     </style>
 {% endblock %}
@@ -20,41 +34,35 @@
     <div class="login_container" id="register_box">
         <div class="part image_side"></div>
         <div class="part right">
-            <h2 class="register_title login_title">Register</h2>
+            <h2 class="register_title login_title">Let's Connect!</h2>
             <form  method="POST" action = "" enctype = "multipart/form-data">
                 {{ register_form.hidden_tag() }}
                 <div class="input">
-                    <label>Username: </label>
-                    {{ register_form.username(class="input_field", placeholder="") }}
-                </div>
-                <div class="input">
                     <label>Name: </label>
-                    {{ register_form.name(class="input_field", placeholder="") }}
+                    {{ register_form.name(class="input_field", placeholder="Name") }}
                 </div>
                 <div class="input">
                     <label>Email Id: </label>
-                    {{ register_form.email(class="input_field", placeholder="") }}
+                    {{ register_form.email(class="input_field", placeholder="Email Id") }}
                 </div>
                 <div class="input">
-                    <label>Interests: </label>
-                    {{ register_form.interests(class="input_field", placeholder="") }}
+                    <label>Username: </label>
+                    {{ register_form.username(class="input_field", placeholder="Username") }}
                 </div>
                 <div class="input">
                     <label>Password: </label>
-                    {{ register_form.password(class="input_field", placeholder="") }}
-                </div>
-                <div class="input">                
-                    <label>Confirm Password: </label>
-                    {{ register_form.confirm_password(class="input_field", placeholder="") }}
+                    {{ register_form.password(class="input_field", placeholder="Password") }}
                 </div>
         
-                <div class="input">
-                    <label for="pfp" class="btn">Select Profile Picture Here</label>
-                    <input id="pfp" type = "file" name = "pfp" accept=".png,.jpg,.jpeg" style="visibility:hidden;" required/>
-                </div>
+                <!-- <div class="input">
+                    <label for="pfp" class="btn" style="display: block">Select Profile Picture Here</label>
+                    <input id="pfp" type = "file" name = "pfp" accept=".png,.jpg,.jpeg" style="display: none;" placeholder="Select Profile Picture Here" required/>
+                </div> -->
+
+                <p>By connecting with us, you accept our terms and conditions.</p>
 
                 {{ register_form.submit(class="login_btn") }}
-                <p>Already have an account? <a href="{{ url_for("signin", login="0") }}">Login now!</a></p>
+                <p>Already have an account? <a href="{{ url_for("signin", login="0") }}" style="">Login</a></p>
             </form>
         </div>
     </div>

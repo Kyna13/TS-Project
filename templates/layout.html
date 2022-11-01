@@ -9,17 +9,31 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link href="http://fonts.cdnfonts.com/css/a-astro-space" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
 
         {% block head %}
         {% endblock %}
     </head>
-    <body>         
+    <body>
         <nav>
-            <div class="nav_container">
-                <div class="nav_icon">
-                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/HEART.png') }}" ></img></a>
+            <div class="upper_nav_container">
+                <div class="upper_nav_icon left_nav_icon">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/logo_full.png') }}" ></img></a>
                 </div>
-                <div class="nav_icon">
+                <div class="upper_nav_icon">
+                    <a href = "{{ url_for('index') }}">Creators</a>
+                    <a href = "{{ url_for('index') }}">Creations</a>
+                </div>
+                <div class="upper_nav_icon right_nav_icon">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/hat.png') }}" ></img></a>
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/scarlett.png') }}" ></img></a>
+                </div>
+            </div>
+          
+            <div class="nav_container">
+                <div class="nav_icon nav_icon_first">
                     <a href = "{{ url_for('profile') }}"><img src="{{ url_for('static', filename='images/nav/home.png') }}" ></img></a>
                 </div>
                 <div class="nav_icon">
@@ -34,12 +48,12 @@
                 <div class="nav_icon">
                     <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/hat.png') }}" ></img></a>
                 </div>
-                <div class="nav_icon">
+                <!-- <div class="nav_icon">
                     <a href = "{{ url_for('signout') }}"><img src="{{ url_for('static', filename='images/nav/signout.png') }}" ></img></a>
-                </div>
+                </div> -->
             </div>
         </nav>
-
+        
         {% block content %}
         {% endblock %}
 

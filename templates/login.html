@@ -4,10 +4,24 @@
     <style>
         .container{
             margin-top: 20px;
+            width: 90%;
+            margin: 20px auto;
         }
 
         nav{
             display: none;
+        }
+
+        p{
+            margin: 25px auto; max-width: 65%; font-size: 15px; width: fit-content;
+        }
+
+        label{
+            display: none;
+        }
+
+        a{
+            text-decoration: none; color: #BD01FF;
         }
     </style>
 {% endblock %}
@@ -25,15 +39,18 @@
                 {{ signin_form.hidden_tag() }}
                 <div class="input">
                     <label>Username: </label>
-                    {{ signin_form.username(class="input_field", placeholder="") }}
+                    {{ signin_form.username(class="input_field", placeholder="Username") }}
                 </div>
                 <div class="input">
                     <label>Password: </label>
-                    {{ signin_form.password(class="input_field", placeholder="") }}
+                    {{ signin_form.password(class="input_field", placeholder="Password") }}
                 </div>
+
+                <p>Forgot password?</p>
+
                     {{ signin_form.submit(class="login_btn") }}
             </form>
-            <p>Don't have an account? <a href="{{ url_for("register", login="0") }}">Register now!</a></p>
+            <p>Don't have an account? <a href="{{ url_for("register", login="0") }}">Join</a></p>
         </div>
     </div>
 </div>
