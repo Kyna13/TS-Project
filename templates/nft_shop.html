@@ -1,0 +1,260 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <title>{{ username }}</title>
+    <style>
+        .container{
+            z-index: -1;
+            background: rgba(255, 255, 255, 0);
+        }
+
+        .pfp img{
+            width: 80px;
+            height: 80px;
+            margin: 15px;
+        }
+
+        .pfp{
+            width: 110px;
+            height: 110px;
+            background-color: #000000;
+            border: 2px solid #C625FF;
+            border-radius: 100px;
+            margin-top: 20px;
+        }
+
+        .profile_upper{
+            display: flex;
+            max-width: 500px;
+            margin-top: 40px;
+        }
+
+        .profile_upper h1{
+            margin-top: 40px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 10px;
+
+            color: #FFFFFF;
+
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile_upper p{
+            font-family: 'Alata';
+            font-style: normal;
+            font-weight: 200;
+            font-size: 15px;
+            line-height: 0px;
+
+            color: #FFFFFF;
+
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile_upper .profile_upper_right{
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        .profile_lower{
+            display: flex;
+            width: 97%;
+            margin-right: auto;
+            margin-top: 28px;
+            height: 65vh;        
+        }
+
+        .profile_lower_content{
+            background: rgba(3, 3, 3, 0.5);
+            border: 1px solid #BD01FF;
+            border-radius: 30px;
+        }
+
+        .profile_lower_right{
+            width: 32%;
+        }
+
+        .profile_lower_left{
+            width: 65%;
+            margin-right: 3%;
+        }
+
+
+
+        h1, p{
+            margin-bottom: 20px;
+        }
+
+        .upper{
+            width: 99vw;
+            height: 175px;
+            background-image: url("{{ url_for('static', filename='images/profile_pics/banner.png') }}");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            position: absolute;
+            top: 70px;
+            right: 0px;
+            z-index: -1;
+            padding: 20px 0px 20px 5px;
+        }
+
+        .profile_button{
+            width: 100px;
+            height: 25px;
+            margin: 10px;
+            border: 0px solid #000000;
+            border-radius: 20px;
+        }
+
+        .profile_content{
+            z-index: 1;
+        }
+
+        .profile_button_container{
+            float: right;
+            margin: 70px 130px 0px 0px;
+        }
+
+        .white{
+            background-color: #ffffff;
+        }
+
+        .purple{
+            background-color: #C625FF;
+        }
+
+        .upper_nav_container{
+            display: none;
+        }
+
+        .profile_nav{
+            display: flex;
+        }
+
+        .left_nav_icon{
+            margin-left: 15px;
+            max-width: 300px;
+        }
+
+        aside {
+            width: 30%;
+            padding-left: 15px;
+            margin-left: 15px;
+            float: right;
+            display: flex;
+        }
+
+        .menu_button {
+            color:white; 
+            width:140px; 
+            height:30px; 
+            border-radius: 10px; 
+            background-color:rgba(0,0,0,0.5);
+        }
+
+        .menu_button:active {
+            color: purple;
+        }
+
+        .menu_button:visited {
+            color: purple;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<div class="upper_nav_container_1">
+    <div class="upper_nav_icon_1 left_nav_icon_1">
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/logo_full.png') }}" ></img></a>
+    </div>
+    <div class="upper_nav_icon_1">
+        <a href = "{{ url_for('art_shop') }}">Art Shop</a>
+        <a href = "{{ url_for('nft_shop') }}">NFT Shop</a>
+    </div>
+    <div class="upper_nav_icon_1 right_nav_icon_1">
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/hat.png') }}" ></img></a>
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/scarlett.png') }}" ></img></a>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="upper_nav_container" style="margin: up 20%;">
+        <div class="upper_nav_icon" >
+            
+        </div>
+    </div>
+    <aside>
+        <div style="height: 100; width: 100%"><br><br><br>
+            <button style="bgcolor:white; width:80%; height:70%; border-radius: 15px;"></button><br><br>
+            <button style="bgcolor:white; width:80%; height:70%; border-radius: 15px;"></button><br><br>
+            <button style="bgcolor:white; width:80%; height:70%; border-radius: 15px;"></button><br><br>
+            <button style="bgcolor:white; width:80%; height:70%; border-radius: 15px;"></button><br><br>
+        </div>
+    </aside>
+    <table width="60%" style="margin: above 20%;">
+        <tr height="150">&nbsp;</tr>
+        <tr width="100%">
+            <td width="45%" align="left">
+                <svg width="100%" height="150">
+                    <rect width="100%" height="150" rx="20" ry="20" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
+                </svg>
+            </td>
+            <td width="10%" >&nbsp;&nbsp;</td>
+            <td width="45%" align="right">
+                <svg width="100%" height="150">
+                    <rect width="100%" height="150" rx="20" ry="20" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
+                </svg>
+            </td>
+        </tr>
+        <tr height="20%">&nbsp;&nbsp;</tr>
+        <tr>
+            <td>
+                <svg width="100%" height="150">
+                    <rect width="100%" height="150" rx="20" ry="20" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
+                </svg>
+            </td>
+            <td width="10%">&nbsp;&nbsp;</td>
+            <td>
+                <svg width="100%" height="150">
+                    <rect width="100%"  height="150" rx="20" ry="20"  style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+            </td>
+        </tr>
+        <tr height="20%">&nbsp;&nbsp;</tr>
+        <tr>
+            <td width="45%" align="left">
+                <svg width="100%" height="150">
+                    <rect width="100%"  height="150" rx="20" ry="20"  style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+            </td>
+            <td width="10%"></td>
+            <td width="45%" align="right">
+                <svg width="100%" height="150">
+                    <rect width="100%"  height="150" rx="20" ry="20"  style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
+                </svg>
+            </td>
+        </tr>
+    </table>
+{% for error in errors_lst %}
+    <p class="errors">{{ error }}</p>
+{% endfor %}
+    <script>
+        if (document.getElementById("conformation_text").innerHTML != ""){
+            document.getElementById("register_box").style.display = "none";
+            errors = document.getElementsByClassName("errors");
+            for (i = 0; i < errors.length; i++) {
+                errors[i].style.display = "none";
+            }
+            document.getElementById("conformation_button").style.display = "block";
+            document.getElementById("conformation_title").style.display = "block";
+            document.getElementById("conformation_text").style.display = "block";
+        }
+    </script>
+{% endblock %}

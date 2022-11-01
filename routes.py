@@ -223,5 +223,23 @@ def signout():
     return redirect(url_for("community", login="0"))
 
 
+@app.route('/artshop')
+def art_shop():
+    if not session.get("Username"):
+        return redirect(url_for('signin', login='0')) 
+    if session["Username"] == None:   
+         return redirect(url_for('signin', login='0'))
+    return render_template("art_shop.html")
+
+
+@app.route('/nftshop')
+def nft_shop():
+    if not session.get("Username"):
+        return redirect(url_for('signin', login='0')) 
+    if session["Username"] == None:   
+         return redirect(url_for('signin', login='0'))
+    return render_template("nft_shop.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=1111, host="0.0.0.0")
