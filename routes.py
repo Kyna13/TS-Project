@@ -12,11 +12,11 @@ class RegisterationForm(FlaskForm):
     username = StringField('User Name: ', validators = [InputRequired(), Length(min=2, max=50)])
     name = StringField('Name: ', validators = [InputRequired(), Length(min=2, max=100)])
     email = StringField('Email Address: ', validators = [InputRequired(), Email()])
-    qualifications = StringField('Qualifications: ', validators = [Length(max=300)])
-    interests = StringField('Qualifications: ', validators = [Length(max=300)])
-    confirm_password = PasswordField('Confirm Password: ', validators=[InputRequired()])
-    password = PasswordField('Password: ', validators = [InputRequired(), Length(min=6), EqualTo('confirm_password')])
-    submit = SubmitField("Sign Up")
+    # qualifications = StringField('Qualifications: ', validators = [Length(max=300)])
+    # # interests = StringField('Qualifications: ', validators = [Length(max=300)])
+    # confirm_password = PasswordField('Confirm Password: ', validators=[InputRequired()])
+    password = PasswordField('Password: ', validators = [InputRequired(), Length(min=6)])
+    submit = SubmitField("Join")
 
 class SigninForm(FlaskForm):
     username = StringField('Username: ', validators = [InputRequired(), Length(min=2, max=50)])
@@ -36,7 +36,6 @@ class PostForm(FlaskForm):
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = ''
 app.config.from_pyfile('config.py')
 username = ""
 user_level = 0
@@ -54,32 +53,36 @@ def index():
 
 @app.route('/register', methods=["POST", "GET"])
 def register():
-    database_script.execute_userinfo("CREATE TABLE IF NOT EXISTS userinfo (id INTEGER PRIMARY KEY, profile_pic TEXT, username Text, name TEXT, email TEXT, password TEXT, qualifications TEXT, interests TEXT, plan TEXT)")
+    database_script.execute_userinfo("CREATE TABLE IF NOT EXISTS userinfo (id INTEGER PRIMARY KEY, username Text, name TEXT, email TEXT, password TEXT, plan TEXT)")
     register_form = RegisterationForm()
     errors_lst = []
-    user_to_create = {"Username": "", "Name": "", "Email": "", "Password": "", "qualifications": "", "interests": ""}
+    user_to_create = {"Username": "", "Name": "", "Email": "", "Password": ""}
     rows = database_script.view_userinfo()
 
     if register_form.validate_on_submit():
 
-        user_to_create = {"Username": register_form.username.data, "Name": register_form.name.data, "Email": register_form.email.data, "Password": sha256_crypt.encrypt(register_form.password.data), "qualifications": register_form.qualifications.data, "interests": register_form.interests.data}
+        # print("This", request.files['pfp'])
+        # if request.files['pfp'] == None:
+        #     print("Yes")
+
+        user_to_create = {"Username": register_form.username.data, "Name": register_form.name.data, "Email": register_form.email.data, "Password": sha256_crypt.encrypt(register_form.password.data)}
 
         if rows != [] and rows != None:
             for row in rows:
                 if user_to_create["Username"] == row[1]:
                     errors_lst.append("Username: This username is already taken. Please write a different one.")
         
-        '''file = request.files['pfp']
-        filename = ""
-        if str(file.filename.split(".")[-1]) in ["png", "jpg", "jpeg"]:
-            filename = "static\\images\\profile_pics\\" + user_to_create["Username"] + "." + str(file.filename.split(".")[-1])
-            file.save(filename)
-        else:
-            errors_lst.append("File: " + "Please upload a file with the extention .png, .jpg or .jpeg only")'''
+        # file = request.files['pfp']
+        # filename = ""
+        # if str(file.filename.split(".")[-1]) in ["png", "jpg", "jpeg"]:
+        #     filename = "static\\images\\profile_pics\\" + user_to_create["Username"] + "." + str(file.filename.split(".")[-1])
+        #     file.save(filename)
+        # else:
+        #     errors_lst.append("File: " + "Please upload a file with the extention .png, .jpg or .jpeg only")
   
         if len(errors_lst) == 0:  
 
-            user_to_create_command_str = "INSERT INTO userinfo VALUES(NULL, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')" % (filename, user_to_create["Username"], user_to_create["Name"], user_to_create["Email"], user_to_create["Password"], user_to_create["qualifications"], user_to_create["interests"], "basic")
+            user_to_create_command_str = "INSERT INTO userinfo VALUES(NULL, '%s', '%s', '%s', '%s', '%s')" % (user_to_create["Username"], user_to_create["Name"], user_to_create["Email"], user_to_create["Password"], "basic")
             database_script.execute_userinfo(user_to_create_command_str)
             session["Username"] = user_to_create["Username"]
             return redirect(url_for('profile', login="1"))
@@ -114,27 +117,25 @@ def signin():
 
 @app.route('/profile', methods=["POST", "GET"])
 def profile():
-    if "Username" not in request.files.keys():
-        return redirect(url_for('signin', login='0'))
     if session["Username"] != None:
 
         profile = []
         username = session["Username"]
         rows = database_script.view_userinfo()
         for row in rows:
-            if row[2] == username:
-                profile = row
-        
-        pfp = '/'.join(profile[1].split("\\"))
-        username = profile[2]
-        name = profile[3]
-        email = profile[4]
-        password = profile[5]
-        qualifications = profile[6]
-        interests = profile[7]
-        plan = profile[8].title()
+            if row[1] == username:
+                profile = list(row)
 
-        return render_template("profile.html", login = "1", pfp = pfp, username = username, name = name, email = email, password = password, qualifications = qualifications, interests = interests, plan = plan)
+            print(profile, row)
+        
+        # pfp = '/'.join(profile[1].split("\\"))
+        username = profile[1]
+        name = profile[2]
+        email = profile[3]
+        password = profile[4]
+        plan = profile[5].title()
+
+        return render_template("profile.html", login = "1", pfp = "", username = username, name = name, email = email, password = password, plan = plan)
     else:
         signin_form = SigninForm()
         return redirect(url_for('signin', login='0'))
@@ -142,8 +143,6 @@ def profile():
 
 @app.route('/post', methods=["POST", "GET"])
 def post():
-    if "Username" not in request.files.keys():
-        return redirect(url_for('signin', login='0'))
     if session["Username"] != None:
         post_form = PostForm()
         database_script.execute_userinfo("CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY, image TEXT, original_poster Text, title TEXT, description TEXT, tags TEXT, liked_by TEXT, to_sell TEXT, price TEXT, owner TEXT)")
