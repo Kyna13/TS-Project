@@ -13,7 +13,7 @@ class RegisterationForm(FlaskForm):
     name = StringField('Name: ', validators = [InputRequired(), Length(min=2, max=100)])
     email = StringField('Email Address: ', validators = [InputRequired(), Email()])
     # qualifications = StringField('Qualifications: ', validators = [Length(max=300)])
-    # # interests = StringField('Qualifications: ', validators = [Length(max=300)])
+    # gitinterests = StringField('Qualifications: ', validators = [Length(max=300)])
     # confirm_password = PasswordField('Confirm Password: ', validators=[InputRequired()])
     password = PasswordField('Password: ', validators = [InputRequired(), Length(min=6)])
     submit = SubmitField("Join")
@@ -103,8 +103,8 @@ def signin():
     if signin_form.validate_on_submit():
         signin_input = [signin_form.username.data, signin_form.password.data]
         for row in rows:
-            uname = row[2]
-            passwd = row[5]
+            uname = row[1]
+            passwd = row[4]
             if uname == signin_input[0]:
                 if sha256_crypt.verify(signin_input[1], passwd):
                     session["Username"] = uname
@@ -117,6 +117,8 @@ def signin():
 
 @app.route('/profile', methods=["POST", "GET"])
 def profile():
+    if not session.get("Username"):
+        return redirect(url_for('signin', login='0')) 
     if session["Username"] != None:
 
         profile = []
@@ -143,6 +145,8 @@ def profile():
 
 @app.route('/post', methods=["POST", "GET"])
 def post():
+    if not session.get("Username"):
+        return redirect(url_for('signin', login='0')) 
     if session["Username"] != None:
         post_form = PostForm()
         database_script.execute_userinfo("CREATE TABLE IF NOT EXISTS posts (id INTEGER PRIMARY KEY, image TEXT, original_poster Text, title TEXT, description TEXT, tags TEXT, liked_by TEXT, to_sell TEXT, price TEXT, owner TEXT)")

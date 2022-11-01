@@ -14,7 +14,7 @@ def view_userinfo():
     cur = connection.cursor()
     cur.execute("SELECT * FROM userinfo")
     rows = cur.fetchall()
-    print(rows)
+    # print(rows)
     connection.close()
     return rows
 
