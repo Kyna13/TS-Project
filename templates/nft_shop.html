@@ -5,6 +5,7 @@
         .container{
             z-index: -1;
             background: rgba(255, 255, 255, 0);
+            margin-top: 300px;
         }
 
         .pfp img{
@@ -88,21 +89,6 @@
             margin-bottom: 20px;
         }
 
-        .upper{
-            width: 99vw;
-            height: 175px;
-            background-image: url("{{ url_for('static', filename='images/profile_pics/banner.png') }}");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: block;
-            position: absolute;
-            top: 70px;
-            right: 0px;
-            z-index: -1;
-            padding: 20px 0px 20px 5px;
-        }
-
         .profile_button{
             width: 100px;
             height: 25px;
@@ -144,17 +130,20 @@
         aside {
             width: 30%;
             padding-left: 15px;
-            margin-left: 15px;
+            margin-left: 66%;
             float: right;
             display: flex;
+            z-index: 2;
+            position: absolute;
         }
-
+  
         .menu_button {
-            color:white; 
-            width:140px; 
-            height:30px; 
-            border-radius: 10px; 
-            background-color:rgba(0,0,0,0.5);
+            color: white; 
+            width: 140px; 
+            height: 50px;
+            background: #060606;
+            box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.27);
+            border-radius: 20px;
         }
 
         .menu_button:active {
@@ -164,10 +153,46 @@
         .menu_button:visited {
             color: purple;
         }
+
+        .upper{
+            width: 99vw;
+            height: 250px;
+            background-image: url("{{ url_for('static', filename='images/shop/nft_banner.png') }}");
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            position: absolute;
+            top: 70px;
+            right: 0px;
+            z-index: -1;
+            padding: 20px 0px 20px 5px;
+        }
+
+        td > svg{
+            background: #3E3E3E;
+            border-radius: 30px;
+        }
+
     </style>
 {% endblock %}
 
 {% block content %}
+
+<aside>
+    <div style="height: 150; width: 100%; align-content: center;"><br><br><br>
+        <span style="color: white; width: 100%; text-align: left; position: absolute; font-size: 20px;">
+            Best NFT Collections &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button style="border-radius: 10px; height:30px; width:100px; background-color: #000000; color: #FFFFFF;">View All</button>
+        </span>
+        <button style="bgcolor:white; width:95%; height:70%; border-radius: 15px; margin-top: 10%;"></button><br><br>
+        <button style="bgcolor:white; width:95%; height:70%; border-radius: 15px;"></button><br><br>
+        <button style="bgcolor:white; width:95%; height:70%; border-radius: 15px;"></button><br><br>
+        <button style="bgcolor:white; width:95%; height:70%; border-radius: 15px;"></button><br><br>
+    </div>
+</aside>
+
+<div class="upper"></div>
 
 <div class="upper_nav_container_1">
     <div class="upper_nav_icon_1 left_nav_icon_1">
@@ -185,60 +210,131 @@
 
 
 <div class="container">
-    <div class="upper_nav_container" style="margin: up 20%;">
-        <div class="upper_nav_icon" >
-            
-        </div>
-    </div>
-    <aside>
-        <div style="height: 100; width: 100%"><br><br><br>
-            <button style="bgcolor:white; width:80%; height:70%; border-radius: 15px;"></button><br><br>
-            <button style="bgcolor:white; width:80%; height:70%; border-radius: 15px;"></button><br><br>
-            <button style="bgcolor:white; width:80%; height:70%; border-radius: 15px;"></button><br><br>
-            <button style="bgcolor:white; width:80%; height:70%; border-radius: 15px;"></button><br><br>
-        </div>
-    </aside>
     <table width="60%" style="margin: above 20%;">
         <tr height="150">&nbsp;</tr>
         <tr width="100%">
             <td width="45%" align="left">
-                <svg width="100%" height="150">
-                    <rect width="100%" height="150" rx="20" ry="20" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
-                </svg>
+                <div width="100%" height="150" style="border-radius: 20px; background-color: rgba(50, 50, 50, 0.75));">
+                    <img style="border-radius: 10%,10%,0%,0%; vertical-align: top;" src="{{ url_for('static', filename='images/shop/art.jpg') }}" width="100%" height="100">
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">Zapverse</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        0.23 ETH 
+                        <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15">
+                    </span>
+                    <br>
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">
+                        <img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15"> ZAP
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        <img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15">2.3K
+                    </span>
+                </div>
             </td>
             <td width="10%" >&nbsp;&nbsp;</td>
             <td width="45%" align="right">
-                <svg width="100%" height="150">
-                    <rect width="100%" height="150" rx="20" ry="20" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
-                </svg>
+                <div width="100%" height="150" style="border-radius: 20px; background-color: rgba(50, 50, 50, 0.75));">
+                    <img style="border-radius: 10%,10%,0%,0%; vertical-align: top;" src="{{ url_for('static', filename='images/shop/art.jpg') }}" width="100%" height="100">
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">Zapverse</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        0.23 ETH 
+                        <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15">
+                    </span>
+                    <br>
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">
+                        <img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15"> ZAP
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        <img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15">2.3K
+                    </span>
+                </div>
             </td>
         </tr>
         <tr height="20%">&nbsp;&nbsp;</tr>
         <tr>
             <td>
-                <svg width="100%" height="150">
-                    <rect width="100%" height="150" rx="20" ry="20" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
-                </svg>
+                <div width="100%" height="150" style="border-radius: 20px; background-color: rgba(50, 50, 50, 0.75));">
+                    <img style="border-radius: 10%,10%,0%,0%; vertical-align: top;" src="{{ url_for('static', filename='images/shop/art.jpg') }}" width="100%" height="100">
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">Zapverse</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        0.23 ETH 
+                        <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15">
+                    </span>
+                    <br>
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">
+                        <img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15"> ZAP
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        <img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15">2.3K
+                    </span>
+                </div>
             </td>
             <td width="10%">&nbsp;&nbsp;</td>
             <td>
-                <svg width="100%" height="150">
-                    <rect width="100%"  height="150" rx="20" ry="20"  style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
-                </svg>
+                <div width="100%" height="150" style="border-radius: 20px; background-color: rgba(50, 50, 50, 0.75));">
+                    <img style="border-radius: 10%,10%,0%,0%; vertical-align: top;" src="{{ url_for('static', filename='images/shop/art.jpg') }}" width="100%" height="100">
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">Zapverse</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        0.23 ETH 
+                        <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15">
+                    </span>
+                    <br>
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">
+                        <img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15"> ZAP
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        <img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15">2.3K
+                    </span>
+                </div>
             </td>
         </tr>
         <tr height="20%">&nbsp;&nbsp;</tr>
         <tr>
             <td width="45%" align="left">
-                <svg width="100%" height="150">
-                    <rect width="100%"  height="150" rx="20" ry="20"  style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
-                </svg>
+                <div width="100%" height="150" style="border-radius: 20px; background-color: rgba(50, 50, 50, 0.75));">
+                    <img style="border-radius: 10%,10%,0%,0%; vertical-align: top;" src="{{ url_for('static', filename='images/shop/art.jpg') }}" width="100%" height="100">
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">Zapverse</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        0.23 ETH 
+                        <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15">
+                    </span>
+                    <br>
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">
+                        <img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15"> ZAP
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        <img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15">2.3K
+                    </span>
+                </div>
             </td>
             <td width="10%"></td>
             <td width="45%" align="right">
-                <svg width="100%" height="150">
-                    <rect width="100%"  height="150" rx="20" ry="20"  style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
-                </svg>
+                <div width="100%" height="150" style="border-radius: 20px; background-color: rgba(50, 50, 50, 0.75));">
+                    <img style="border-radius: 10%,10%,0%,0%; vertical-align: top;" src="{{ url_for('static', filename='images/shop/art.jpg') }}" width="100%" height="100">
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">Zapverse</span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        0.23 ETH 
+                        <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15">
+                    </span>
+                    <br>
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="left">
+                        <img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15"> ZAP
+                    </span>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span style="border-radius: 0px, 0px, 20px, 20px; vertical-align: top;" width="100%" height="25" text-align="right">
+                        <img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15">2.3K
+                    </span>
+                </div>
             </td>
         </tr>
     </table>
