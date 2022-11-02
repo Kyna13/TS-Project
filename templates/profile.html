@@ -61,27 +61,154 @@
 
         .profile_lower{
             display: flex;
+            justify-content: space-between;
             width: 97%;
             margin-right: auto;
-            margin-top: 28px;
+            margin-top: 20px;
             height: 65vh;        
         }
 
         .profile_lower_content{
             background: rgba(3, 3, 3, 0.5);
-            border: 1px solid #BD01FF;
+            /* border: 1px solid #BD01FF; */
             border-radius: 30px;
         }
 
         .profile_lower_right{
-            width: 32%;
+            width: 30%;
+            padding: 0px 20px;
+            margin-top: 8px;
         }
 
         .profile_lower_left{
             width: 65%;
-            margin-right: 3%;
         }
 
+        .profile_lower_top{
+            display: flex;
+            max-width: fit-content;
+            margin: 0 auto;
+            justify-content: space-around;
+        }
+
+        .profile_lower_top_button{
+            padding: 10px 20px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 12px;
+            line-height: 18px;
+
+            color: #FFFFFF;
+
+            text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .active{
+            background: #BD01FF;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.37);
+            border-radius: 30px;
+        }
+
+        .profile_lower_bottom{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;            
+            height: 65vh;
+            overflow-y: scroll;
+            margin-bottom: 20px;
+        }
+
+        .profile_lower_bottom_button > .bottom{
+            margin-bottom: 20px;
+        }
+
+        .example::-webkit-scrollbar {
+            display: none;
+        }
+
+        .profile_lower_bottom_button{
+            width: 320px;
+            height: 226px;
+
+            background: #1E1E1E;
+            border-radius: 30px;
+
+            margin-top: 25px;
+        }
+
+        .profile_lower_center{
+            height: 65vh;
+            width: 2px;
+            background-color: #BD01FF;
+            margin-top: 15px;
+        }
+
+        .profile_lower_right_top{
+            display: flex;
+            justify-content: space-between
+        }
+
+        .profile_lower_right_top .text{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 17px;
+            line-height: 24px;
+
+            color: #FFFFFF;
+        }
+
+        .profile_lower_right_top .button{
+            background: #030303;
+            border: 1px solid #BD01FF;
+            border-radius: 20px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 9px;
+            line-height: 11px;
+
+            color: #FFFFFF;
+
+            width: 33px;
+            padding: 5px 10px;
+        }
+
+        .profile_lower_top_right{
+            display: flex;
+            max-width: fit-content;
+            margin: 0 auto;
+            justify-content: space-around;
+            margin-top: 35px;
+
+        }
+
+        .profile_lower_top_right > .profile_lower_top_button{
+            padding-top: 5px;
+            padding-bottom: 5px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 800;
+            font-size: 10px;
+            line-height: 12px;
+
+            color: #FFFFFF;
+
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile_chart{
+            max-width: 250px;
+            max-height: 400px;
+            margin-top: 30px;
+        }
+
+
+        
 
 
         h1, p{
@@ -140,14 +267,6 @@
             margin-left: 15px;
             max-width: 300px;
         }
-
-        aside {
-            width: 30%;
-            padding-left: 15px;
-            margin-left: 15px;
-            float: right;
-            display: flex;
-        }
     </style>
 {% endblock %}
 
@@ -158,7 +277,7 @@
         <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/logo_full.png') }}" ></img></a>
     </div>
     <div class="upper_nav_icon right_nav_icon">
-        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/hat.png') }}" ></img></a>
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/chat.png') }}" ></img></a>
         <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/scarlett.png') }}" ></img></a>
     </div>
 </div>
@@ -179,65 +298,42 @@
                 <p>Connecting with future!</p>
             </div>
         </div>
-        <table width="100%">
-            <tr>
-                <td width="60%">
-                    <button width="25%">All Posts</button>
-                    <button width="25%">All Posts</button>
-                    <button width="25%">All Posts</button>
-                    <button width="25%">All Posts</button>
-                </td>
-            </tr>
-        </table>
-        <aside>
-            <svg width="100%" height="1000">
-                <rect width="100%" height="1000" style="fill:rgba(0, 0, 0, 0.25);stroke-width:3;stroke:rgba(0,0,0,0.25)" />
-            </svg>
-        </aside>
-        <table width="60%">
-            <tr width="100%">
-                <td width="45%" align="left">
-                    <svg width="100%" height="300">
-                        <rect width="100%" height="300" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
-                      </svg>
-                </td>
-                <td width="10%" >&nbsp;&nbsp;</td>
-                <td width="45%" align="right">
-                    <svg width="100%" height="300">
-                        <rect width="100%" height="300" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
-                      </svg>
-                </td>
-            </tr>
-            <tr height="20%">&nbsp;&nbsp;</tr>
-            <tr>
-                <td>
-                    <svg width="100%" height="300">
-                        <rect width="100%" height="3000" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgba(0,0,0,0.5)" />
-                      </svg>
-                </td>
-                <td width="10%">&nbsp;&nbsp;</td>
-                <td>
-                    <svg width="100%" height="300">
-                        <rect width="100%" height="300" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
-                      </svg>
-                </td>
-            </tr>
-            <tr height="20%">&nbsp;&nbsp;</tr>
-            <tr>
-                <td width="45%" align="left">
-                    <svg width="100%" height="300">
-                        <rect width="100%" height="300" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
-                      </svg>
-                </td>
-                <td width="10%"></td>
-                <td width="45%" align="right">
-                    <svg width="100%" height="300">
-                        <rect width="100%" height="300" style="fill:rgba(0,0,0,0.5);stroke-width:3;stroke:rgb(0,0,0)" />
-                      </svg>
-                </td>
-            </tr>
-        </table>
+        <!-- <p>Name: {{ name }}</p>
+        <p>Email: {{ email }}</p>
+        <p>Interests: {{ interests }}</p>
+        <p>Plan: {{ plan }}</p> -->
+        <div class="profile_lower">
+            <div class="profile_lower_content profile_lower_left">
+                <div class="profile_lower_top">
+                    <div class="profile_lower_top_button active">ALL POSTS</div>
+                    <div class="profile_lower_top_button">ALL POSTS</div>
+                    <div class="profile_lower_top_button">ALL POSTS</div>
+                    <div class="profile_lower_top_button">ALL POSTS</div>
+                </div>
+                <div class="profile_lower_bottom">
+                    <div class="profile_lower_bottom_button"></div>
+                    <div class="profile_lower_bottom_button"></div>
+                    <div class="profile_lower_bottom_button"></div>
+                    <div class="profile_lower_bottom_button"></div>
+                    <div class="profile_lower_bottom_button bottom"></div>
+                    <div class="profile_lower_bottom_button bottom"></div>
+                </div>
+            </div>
+            <div class="profile_lower_content profile_lower_center"></div>
+            <div class="profile_lower_content profile_lower_right">
+                <div class="profile_lower_right_top">
+                    <div class="text">Insights</div>
+                    <div class="button">View all</div>
+                </div>
+                <div class="profile_lower_top_right">
+                    <div class="profile_lower_top_button active">This week</div>
+                    <div class="profile_lower_top_button">Last Month</div>
+                </div>
+                <img class="profile_chart" src="{{ url_for('static', filename='images/profile_pics/chart.png') }}"
+            </div>
+        </div>
     </div>
+
 {% for error in errors_lst %}
     <p class="errors">{{ error }}</p>
 {% endfor %}

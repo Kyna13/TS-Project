@@ -5,6 +5,7 @@
         .container{
             z-index: -1;
             background: rgba(255, 255, 255, 0);
+            margin-top: 300px;
         }
 
         .pfp img{
@@ -88,21 +89,6 @@
             margin-bottom: 20px;
         }
 
-        .upper{
-            width: 99vw;
-            height: 175px;
-            background-image: url("{{ url_for('static', filename='images/profile_pics/banner.png') }}");
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-            display: block;
-            position: absolute;
-            top: 70px;
-            right: 0px;
-            z-index: -1;
-            padding: 20px 0px 20px 5px;
-        }
-
         .profile_button{
             width: 100px;
             height: 25px;
@@ -151,11 +137,12 @@
 
         
         .menu_button {
-            color:white; 
-            width:140px; 
-            height:30px; 
-            border-radius: 10px; 
-            background-color:rgba(0,0,0,0.5);
+            color: white; 
+            width: 140px; 
+            height: 50px;
+            background: #060606;
+            box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.27);
+            border-radius: 20px;
         }
 
         .menu_button:active {
@@ -165,10 +152,33 @@
         .menu_button:visited {
             color: purple;
         }
+
+        .upper{
+            width: 99vw;
+            height: 250px;
+            background-image: url("{{ url_for('static', filename='images/shop/art_banner.jpg') }}");
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            position: absolute;
+            top: 70px;
+            right: 0px;
+            z-index: -1;
+            padding: 20px 0px 20px 5px;
+        }
+
+        td > svg{
+            background: #3E3E3E;
+            border-radius: 30px;
+        }
+
     </style>
 {% endblock %}
 
 {% block content %}
+
+<div class="upper"></div>
 
 <div class="upper_nav_container_1">
     <div class="upper_nav_icon_1 left_nav_icon_1">
@@ -179,7 +189,7 @@
         <a href = "{{ url_for('nft_shop') }}">NFT Shop</a>
     </div>
     <div class="upper_nav_icon_1 right_nav_icon_1">
-        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/hat.png') }}" ></img></a>
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/chat.png') }}" ></img></a>
         <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/scarlett.png') }}" ></img></a>
     </div>
 </div>
@@ -195,10 +205,11 @@
         <button class="menu_button"><b>Digital Art</b></button> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button class="menu_button"><b>Traditional Art</b></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button class="menu_button"><b>3D Art</b></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button class="menu_button"><b>Music</b></button>
+        <button class="menu_button"><b>Music</b></button></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <button class="menu_button"><b>Nudity</b></button>
     </div>
     <aside>
-        <div style="height: 1000; width: 100%"><br><br><br>
+        <div style="width: 100%; margin: 0 auto"><br><br><br>
             <button style="bgcolor:white; width:80%; height:50%; border-radius: 15px;"></button><br><br>
             <button style="bgcolor:white; width:80%; height:50%; border-radius: 15px;"></button><br><br>
             <button style="bgcolor:white; width:80%; height:50%; border-radius: 15px;"></button><br><br>

@@ -16,27 +16,11 @@
 }
 
 body{
-    background-color: #171717;
+    background-color: #070707;
 }
 
-/* width */
 ::-webkit-scrollbar {
-    width: 15px;
-}
-  
-  /* Track */
-::-webkit-scrollbar-track {
-    background: #ffffff;
-}
-  
-  /* Handle */
-::-webkit-scrollbar-thumb {
-    background: rgb(107, 157, 173);
-}
-  
-  /* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-    background: rgb(75, 116, 141);
+    width: 0px;
 }
 
 /* Nav bar styling start */
@@ -88,8 +72,8 @@ body{
 }
 
 .right_nav_icon img, .right_nav_icon_1 img{
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     margin-right: 25px;
 }
 
