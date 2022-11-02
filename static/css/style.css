@@ -55,7 +55,11 @@ body{
     font-size: 15px;
     line-height: 26px;
 
-    color: #9000C2;
+    color: #ffffff;
+}
+
+.active_nav{
+    color: #9000C2 !important;    
 }
 
 .left_nav_icon, .left_nav_icon_1{
@@ -92,7 +96,7 @@ body{
     left: 0px;
     width: 45px;
     padding: 10px 7.5px 10px 7.5px;
-    background-color: #2C2C2C;
+    background: #0B0B0B;
     z-index: 1;
 }
 
@@ -135,6 +139,15 @@ body{
     margin-bottom: 5px;
     display: block;
     background: #ffffff;
+}
+
+.nav_divider{
+    width: 35px;
+    height: 2px;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    margin-top: 10px;
+    background-color:#9000C2;
 }
 
 

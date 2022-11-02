@@ -173,6 +173,42 @@
             border-radius: 30px;
         }
 
+        .profile_lower_right_top{
+            display: flex;
+            justify-content: space-between;
+            width: 110%;
+            float: left;
+            padding: 0px 30px 40px 30px;
+            margin-left: -40px;
+        }
+
+        .profile_lower_right_top .text{
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 17px;
+            line-height: 24px;
+
+            color: #FFFFFF;
+        }
+
+        .profile_lower_right_top .button{
+            background: #030303;
+            border: 1px solid #BD01FF;
+            border-radius: 20px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 9px;
+            line-height: 11px;
+
+            color: #FFFFFF;
+
+            width: 33px;
+            padding: 5px 10px;
+        }
+
     </style>
 {% endblock %}
 
@@ -185,12 +221,12 @@
         <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/logo_full.png') }}" ></img></a>
     </div>
     <div class="upper_nav_icon_1">
-        <a href = "{{ url_for('art_shop') }}">Art Shop</a>
+        <a href = "{{ url_for('art_shop') }}" class="active_nav">Art Shop</a>
         <a href = "{{ url_for('nft_shop') }}">NFT Shop</a>
     </div>
     <div class="upper_nav_icon_1 right_nav_icon_1">
         <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/chat.png') }}" ></img></a>
-        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/scarlett.png') }}" ></img></a>
+        <a href = "{{ url_for('profile') }}"><img src="{{ url_for('static', filename='images/nav/scarlett.png') }}" ></img></a>
     </div>
 </div>
 
@@ -209,9 +245,12 @@
         <button class="menu_button"><b>Nudity</b></button>
     </div>
     <aside>
-        <div style="height: 150; width: 80%; background: rgba(0,0,0,0.5); align-content: center; margin: 0 auto"><br><br><br>
-            <span style="color: white; width: 100%; text-align: center; position: absolute; font-size: 20px; height:15%">Trending Art</span>
-            <button style="bgcolor:white; width:100%; height:50%; border-radius: 15px; margin-top: 15%;"></button><br><br>
+        <div style="width: 80%; margin: 0 auto"><br><br><br>
+            <div class="profile_lower_right_top">
+                <div class="text">Insights</div>
+                <div class="button">View all</div>
+            </div>
+            <button style="bgcolor:white; width:100%; height:50%; border-radius: 15px;"></button><br><br>
             <button style="bgcolor:white; width:100%; height:50%; border-radius: 15px;"></button><br><br>
             <button style="bgcolor:white; width:100%; height:50%; border-radius: 15px;"></button><br><br>
             <button style="bgcolor:white; width:100%; height:50%; border-radius: 15px;"></button><br><br>
@@ -231,7 +270,7 @@
                 </svg>
             </td>
         </tr>
-        <tr height="30%">&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;</tr>
+        <tr height="20%">&nbsp;&nbsp;</tr>
         <tr>
             <td>
                 <svg width="100%" height="210">
@@ -245,7 +284,7 @@
                 </svg>
             </td>
         </tr>
-        <tr height="30%">&nbsp;<br>&nbsp;<br>&nbsp;<br>&nbsp;</tr>
+        <tr height="20%">&nbsp;&nbsp;</tr>
         <tr>
             <td width="45%" align="left">
                 <svg width="100%" height="210">

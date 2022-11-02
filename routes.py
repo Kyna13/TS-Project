@@ -48,8 +48,7 @@ def index_start():
 
 @app.route('/index')
 def index():
-    return community()
-
+    return redirect(url_for('community', login='0')) 
 
 @app.route('/register', methods=["POST", "GET"])
 def register():
@@ -214,7 +213,15 @@ def community():
             lst.append({"index": i, "post": row[1], "owner": row[2], "title": row[3], "description": row[4], "tags": row[5], "price": "Not for sale"})
         
 
-    return render_template("community.html", login = login, rows = lst)
+    return render_template("creations.html", login = login, rows = lst)
+
+@app.route('/creators')
+def creators():
+    if not session.get("Username"):
+        return redirect(url_for('signin', login='0')) 
+    if session["Username"] == None:   
+         return redirect(url_for('signin', login='0'))
+    return render_template("creators.html")
 
 
 @app.route('/signout')
