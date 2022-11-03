@@ -1,0 +1,408 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <title>{{ username }}</title>
+    <style>
+        .container{
+            z-index: -1;
+            background: rgba(255, 255, 255, 0);
+            margin-top: 300px;
+        }
+
+        .pfp img{
+            width: 80px;
+            height: 80px;
+            margin: 15px;
+        }
+
+        .pfp{
+            width: 110px;
+            height: 110px;
+            background-color: #000000;
+            border: 2px solid #C625FF;
+            border-radius: 100px;
+            margin-top: 20px;
+        }
+
+        .profile_upper{
+            display: flex;
+            max-width: 500px;
+            margin-top: 40px;
+        }
+
+        .profile_upper h1{
+            margin-top: 40px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 700;
+            font-size: 25px;
+            line-height: 10px;
+
+            color: #FFFFFF;
+
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile_upper p{
+            font-family: 'Alata';
+            font-style: normal;
+            font-weight: 200;
+            font-size: 15px;
+            line-height: 0px;
+
+            color: #FFFFFF;
+
+            text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+
+        .profile_upper .profile_upper_right{
+            margin-top: 20px;
+            margin-left: 10px;
+        }
+
+        .profile_lower{
+            display: flex;
+            width: 97%;
+            margin-right: auto;
+            margin-top: 28px;
+            height: 65vh;        
+        }
+
+        .profile_lower_content{
+            background: rgba(3, 3, 3, 0.5);
+            border: 1px solid #BD01FF;
+            border-radius: 30px;
+        }
+
+        .profile_lower_right{
+            width: 32%;
+        }
+
+        .profile_lower_left{
+            width: 65%;
+            margin-right: 3%;
+        }
+
+
+
+        h1, p{
+            margin-bottom: 20px;
+        }
+
+        .profile_button{
+            width: 100px;
+            height: 25px;
+            margin: 10px;
+            border: 0px solid #000000;
+            border-radius: 20px;
+        }
+
+        .profile_content{
+            z-index: 1;
+        }
+
+        .profile_button_container{
+            float: right;
+            margin: 70px 130px 0px 0px;
+        }
+
+        .white{
+            background-color: #ffffff;
+        }
+
+        .purple{
+            background-color: #C625FF;
+        }
+
+        .upper_nav_container{
+            display: none;
+        }
+
+        .profile_nav{
+            display: flex;
+        }
+
+        .left_nav_icon{
+            margin-left: 15px;
+            max-width: 300px;
+        }
+
+        aside {
+            width: 30%;
+            padding-left: 15px;
+            left: 66%;
+            float: right;
+            display: flex;
+            z-index: 2;
+            position: fixed;
+            top: 10%;
+        }
+  
+        .menu_button {
+            color: white; 
+            width: 140px; 
+            height: 50px;
+            background: #060606;
+            box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.27);
+            border-radius: 20px;
+        }
+
+        .menu_button:active {
+            color: purple;
+        }
+
+        .menu_button:visited {
+            color: purple;
+        }
+
+        .upper{
+            width: 99vw;
+            height: 250px;
+            background-image: url("{{ url_for('static', filename='images/shop/nft_banner.png') }}");
+            background-position: center top;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: block;
+            position: absolute;
+            top: 70px;
+            right: 0px;
+            z-index: -1;
+            padding: 20px 0px 20px 5px;
+        }
+
+        td > div{
+           
+            border-radius: 30px;
+            margin-bottom: 50px;
+            border: 2px solid #FFFFFF;
+            border-radius: 30px;;
+
+        }
+        .zapverse{
+            padding-right: 18rem;
+            margin-bottom: 18rem;
+            border: pink;
+        }
+
+        .zap{
+            padding-right: 18rem;
+        }
+
+        td > div > img{
+            border: red;
+        }
+
+        .upper_nav_icon{
+            margin: auto 0;
+            height: 30px;
+            padding: 3px 10px;
+
+            display: flex;
+            position: absolute;
+            top: 15px;
+            left: 350px;
+
+            background: #070707;
+            border: 1px solid #FFFFFF;
+            border-radius: 30px;
+
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 600;
+            font-size: 13px;
+            line-height: 26px;
+
+            color: #BD01FF;
+        }
+
+        .upper_nav_icon img{
+            width: 20px;
+            height: 20px;
+            margin: auto 10px auto 0;
+        }
+
+        .image_container{
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+
+            border: 2px solid #FFFFFF;
+            border-radius: 37px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+<aside>
+    <div style="height: 150; width: 100%; align-content: center;"><br><br><br>
+        <span style="color: white; width: 100%; text-align: left; position: absolute; font-size: 20px;">
+            Top NFT Collections &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button style="background: #030303; border: 1px solid #BD01FF; border-radius: 20px; height:30px; width:100px; color: #ffffff;">View All</button>
+        </span>
+        <div style="background: rgba(3, 3, 3, 0.9); border: 0px solid #000000; border-radius: 30px; height: 450px; width: 400px; padding: 5%; margin-top: 50px; margin-left: -20px;">
+            <div class="image_container" style="bgcolor:white; width:95%; height:30%; border-radius: 15px; margin-top: 10%; background-image: url('{{ url_for('static', filename="images/posts/nft1.png") }}');"></div><br><br>
+            <div class="image_container" style="bgcolor:white; width:95%; height:30%; border-radius: 15px; background-image: url('{{ url_for('static', filename="images/posts/nft2.png") }}');"></div><br><br>
+            <div class="image_container" style="bgcolor:white; width:95%; height:30%; border-radius: 15px; background-image: url('{{ url_for('static', filename="images/posts/nft3.png") }}');"></div><br><br>
+        </div>
+    </div>
+</aside>
+
+<div class="upper"></div>
+
+<div class="upper_nav_container_1">
+    <div class="upper_nav_icon_1 left_nav_icon_1">
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/logo_full.png') }}" ></img></a>
+    </div>
+    <div class="upper_nav_icon" >
+        <img src="{{ url_for('static', filename="images/nav/cresent.png") }}" />
+        <p>Update to Cresent</p>
+    </div>
+    <div class="upper_nav_icon_1">
+        <a href = "{{ url_for('art_shop') }}">Art Shop</a>
+        <a href = "{{ url_for('nft_shop') }}" class="active_nav">NFT Shop</a>
+    </div>
+    <div class="upper_nav_icon_1 right_nav_icon_1">
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/chat.png') }}" ></img></a>
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/scarlett.png') }}" ></img></a>
+    </div>
+</div>
+<br><br><br>
+<div class="container">
+<table width="60%">
+    <tr width="100%">
+        <td width="45%" align="left">
+            <div style="max-width: 400px; padding-bottom: 10px;">
+                <img style="border-radius: 30px" src="{{ url_for('static', filename='images/shop/art.jpg') }}" width="100%" height="200">
+                <div style="display: flex; justify-content: space-between; padding: 15px 25px 10px 25px;">
+                    <span class="">Zapverse</span>
+                    <span class="">0.23 <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 25px;">
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15">  ZAP</div>
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15"> 2.3K</div>
+                </div>
+            </div>
+        </td>
+        <td width="10%" >&nbsp;&nbsp;</td>
+        <td width="45%" align="left">
+            <div style="max-width: 400px; padding-bottom: 10px;">
+                <img style="border-radius: 30px" src="{{ url_for('static', filename='images/posts/post2.png') }}" width="100%" height="200">
+                <div style="display: flex; justify-content: space-between; padding: 15px 25px 10px 25px;">
+                    <span class="">Zapverse</span>
+                    <span class="">0.23 <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 25px;">
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15">  ZAP</div>
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15"> 2.3K</div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr height="20%">&nbsp;&nbsp;</tr>
+    <tr>
+        <td width="45%" align="left">
+            <div style="max-width: 400px; padding-bottom: 10px;">
+                <img style="border-radius: 30px" src="{{ url_for('static', filename='images/shop/art_banner.jpg') }}" width="100%" height="200">
+                <div style="display: flex; justify-content: space-between; padding: 15px 25px 10px 25px;">
+                    <span class="">Zapverse</span>
+                    <span class="">0.23 <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 25px;">
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15">  ZAP</div>
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15"> 2.3K</div>
+                </div>
+            </div>
+        </td>
+        <td width="10%">&nbsp;&nbsp;</td>
+        <td width="45%" align="left">
+            <div style="max-width: 400px; padding-bottom: 10px;">
+                <img style="border-radius: 30px" src="{{ url_for('static', filename='images/posts/post3.png') }}" width="100%" height="200">
+                <div style="display: flex; justify-content: space-between; padding: 15px 25px 10px 25px;">
+                    <span class="">Zapverse</span>
+                    <span class="">0.23 <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 25px;">
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15">  ZAP</div>
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15"> 2.3K</div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr height="20%">&nbsp;&nbsp;</tr>
+    <tr>
+        <td width="45%" align="left">
+            <div style="max-width: 400px; padding-bottom: 10px;">
+                <img style="border-radius: 30px" src="{{ url_for('static', filename='images/posts/post1.png') }}" width="100%" height="200">
+                <div style="display: flex; justify-content: space-between; padding: 15px 25px 10px 25px;">
+                    <span class="">Zapverse</span>
+                    <span class="">0.23 <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 25px;">
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15">  ZAP</div>
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15"> 2.3K</div>
+                </div>
+            </div>
+        </td>
+        <td width="10%"></td>
+        <td width="45%" align="left">
+            <div style="max-width: 400px; padding-bottom: 10px;">
+                <img style="border-radius: 30px" src="{{ url_for('static', filename='images/posts/post4.png') }}" width="100%" height="200">
+                <div style="display: flex; justify-content: space-between; padding: 15px 25px 10px 25px;">
+                    <span class="">Zapverse</span>
+                    <span class="">0.23 <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15"></span>
+                </div>
+                <div style="display: flex; justify-content: space-between; padding: 10px 25px;">
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15">  ZAP</div>
+                    <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15"> 2.3K</div>
+                </div>
+            </div>
+        </td>
+        <tr width="100%">
+            <td width="45%" align="left">
+                <div style="max-width: 400px; padding-bottom: 10px;">
+                    <img style="border-radius: 30px" src="{{ url_for('static', filename='images/posts/post6.png') }}" width="100%" height="200">
+                    <div style="display: flex; justify-content: space-between; padding: 15px 25px 10px 25px;">
+                        <span class="">Zapverse</span>
+                        <span class="">0.23 <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15"></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 10px 25px;">
+                        <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15">  ZAP</div>
+                        <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15"> 2.3K</div>
+                    </div>
+                </div>
+            </td>
+            <td width="10%" >&nbsp;&nbsp;</td>
+            <td width="45%" align="left">
+                <div style="max-width: 400px; padding-bottom: 10px;">
+                    <img style="border-radius: 30px" src="{{ url_for('static', filename='images/posts/post5.png') }}" width="100%" height="200">
+                    <div style="display: flex; justify-content: space-between; padding: 15px 25px 10px 25px;">
+                        <span class="">Zapverse</span>
+                        <span class="">0.23 <img src="{{ url_for('static', filename='images/shop/eth.png') }}" width="15" height="15"></span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding: 10px 25px;">
+                        <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/pp.png') }}" width="15" height="15">  ZAP</div>
+                        <div class="" style="display: flex; width: 65px; justify-content: space-between;"><img src="{{ url_for('static', filename='images/shop/like.png') }}" width="15" height="15"> 2.3K</div>
+                    </div>
+                </div>
+            </td>
+        </tr>
+</table>
+
+    </div>
+{% for error in errors_lst %}
+    <p class="errors">{{ error }}</p>
+{% endfor %}
+    <script>
+        if (document.getElementById("conformation_text").innerHTML != ""){
+            document.getElementById("register_box").style.display = "none";
+            errors = document.getElementsByClassName("errors");
+            for (i = 0; i < errors.length; i++) {
+                errors[i].style.display = "none";
+            }
+            document.getElementById("conformation_button").style.display = "block";
+            document.getElementById("conformation_title").style.display = "block";
+            document.getElementById("conformation_text").style.display = "block";
+        }
+    </script>
+{% endblock %}

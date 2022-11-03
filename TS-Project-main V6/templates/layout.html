@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
+        <link href="http://fonts.cdnfonts.com/css/a-astro-space" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Alata' rel='stylesheet'>
+
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav>
+            <div class="nav_container">
+                <div class="nav_icon nav_icon_first">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/home.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('post') }}"><img src="{{ url_for('static', filename='images/nav/add.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/logo.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('art_shop') }}"><img src="{{ url_for('static', filename='images/nav/shop.png') }}" ></img></a>
+                </div>
+                <div class="nav_divider"></div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('creators') }}"><img src="{{ url_for('static', filename='images/nav/people.png') }}" ></img></a>
+                </div>
+                <div class="nav_icon">
+                    <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/hat.png') }}" ></img></a>
+                </div>
+            </div>
+        </nav>
+        
+        {% block content %}
+        {% endblock %}
+
+        <script>
+          
+            // Nav bar toggle script
+
+            var toggler_clicked = 0; 
+            function clickHandler(){
+                if (toggler_clicked % 2) {
+                    document.getElementById('nav_menu').style.display = "none";
+                } else{
+                    document.getElementById('nav_menu').style.display = "block";
+                }
+                toggler_clicked++;
+            }
+
+            document.getElementById('toggler').addEventListener('click', clickHandler);
+
+            if(document.getElementById('toggler').clicked == true){
+                alert("Button Clicked!")
+                document.getElementById('nav_menu').style.display = "block";
+            }
+        </script>
+
+    </body>
+</html>

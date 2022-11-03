@@ -1,0 +1,80 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <title>Post Artwork</title>
+    <style>
+        #price{
+            display: none;
+        }
+
+        .login_container{
+            display:block;
+            background-color: #171717;
+            color: #ffffff;
+        }
+
+        input, label{
+            color: #ffffff;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="conformation_title"  id="conformation_title">{{ registration_complete_text }}</h1>
+    <p class="conformation_text" id="conformation_text">{{ registration_complete_text }}</p>
+
+    <div class="login_container" id="register_box">
+        <h2 class="register_title login_title">Post Artwork</h2>
+        <form  method="POST" action = "" enctype = "multipart/form-data">
+            {{ post_form.hidden_tag() }}
+    
+            <div class="input">
+                <input type = "file" name = "post" accept=".png,.jpg,.jpeg" required/>
+            </div>
+            
+            <div class="input">
+                <label>Title: </label>
+                {{ post_form.title(class="input_field", placeholder="") }}
+            </div>
+            <div class="input">
+                <label>Description: </label>
+                {{ post_form.description(class="input_field", placeholder="") }}
+            </div>
+            <div class="input">
+                <label>Tags: </label>
+                {{ post_form.tags(class="input_field", placeholder="") }}
+            </div>
+            <div class="input">
+                <label>To sell? </label>
+                <input type = "checkbox" id="sell" name = "sell_chekbox" value="1" accept=".png,.jpg,.jpeg"/>
+            </div>
+            <div class="input" id="price">
+                <label>Price: </label>
+                {{ post_form.price(class="input_field", placeholder="", id="") }}
+            </div>
+    
+            {{ post_form.submit(class="login_btn") }}
+        </form>
+    </div>
+</div>
+<div id="login_background"></div>
+{% for error in errors_lst %}
+    <p class="errors">{{ error }}</p>
+{% endfor %}
+    <script>
+        if (document.getElementById("conformation_text").innerHTML != ""){
+            document.getElementById("register_box").style.display = "none";
+            errors = document.getElementsByClassName("errors");
+            for (i = 0; i < errors.length; i++) {
+                errors[i].style.display = "none";
+            }
+            document.getElementById("conformation_button").style.display = "block";
+            document.getElementById("conformation_title").style.display = "block";
+            document.getElementById("conformation_text").style.display = "block";
+        }
+
+        $('#sell').click(function() {
+            $('#price')[this.checked ? "show" : "hide"]();
+        });
+    </script>
+{% endblock %}

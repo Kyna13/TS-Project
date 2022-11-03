@@ -1,0 +1,136 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <title>Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" >
+    <style>
+        .container{
+            background: rgba(0, 0, 0, 0);
+            margin-top: 90px;
+            padding: 2% 0% 0% 3%;
+        }
+
+        .explore_container{
+            display: flex;
+            justify-content: space-between;
+            width: 92%;
+            position: fixed;
+            top: 70px;
+            right: 20px;
+            background-color: #070707;
+            padding: 2% 0% 0% 2%;
+        }
+
+        .explore_divider{
+            background: #BD01FF;
+            width: 3px;
+            height: 30px;
+        }
+
+        .explore_right{
+            display: flex;
+            width: 76%;
+            overflow-x: auto;
+            /*flex-wrap: wrap;*/
+            max-height: 150px;
+        }
+
+        .explore_catagories{
+            min-width: 175px;
+            height: 100px;
+            margin-right: 25px;
+
+            background: #FFFFFF;
+            border-radius: 20px;
+        }
+
+        .explore_bottom{
+            display: flex;
+            justify-content: space-between;
+            margin-top: 100px;
+        }
+
+        .explore_bottom_right{
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            width: 65%;
+        }
+
+        .explore_img{
+            width: 350px;
+            height: 200px;
+
+            margin-bottom: 30px;
+            background: #3E3E3E;
+            border: 3px solid #BD01FF;
+            border-radius: 30px;
+        }
+
+        .explore_bottom_left{
+            width: 33%;
+            height: 70vh;
+
+            background: #3E3E3E;
+            border: 3px solid #BD01FF;
+            border-radius: 30px;
+            opacity: 0;
+        }
+
+        .fixed{
+            opacity: 1;
+            display: block;
+            position: fixed;
+            right: 20px;
+            top: 215px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+
+
+<div class="upper_nav_container">
+    <div class="upper_nav_icon left_nav_icon">
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/logo_full.png') }}" ></img></a>
+    </div>
+    <div class="upper_nav_icon">
+        <a href = "{{ url_for('community') }}">Creations</a>
+        <a href = "{{ url_for('creators') }}" class="active_nav">Creators</a>
+    </div>
+    <div class="upper_nav_icon right_nav_icon">
+        <a href = "{{ url_for('index') }}"><img src="{{ url_for('static', filename='images/nav/chat.png') }}" ></img></a>
+        <a href = "{{ url_for('profile') }}"><img src="{{ url_for('static', filename='images/nav/scarlett.png') }}" ></img></a>
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="explore_container">
+        <div class="text">EXPLORE CREATORS</div>
+        <div class="explore_divider"></div>
+        <div class="explore_right">
+            <div class="explore_catagories"></div>
+            <div class="explore_catagories"></div>
+            <div class="explore_catagories"></div>
+            <div class="explore_catagories"></div>
+            <div class="explore_catagories"></div>
+            <div class="explore_catagories"></div>
+            <div class="explore_catagories"></div>
+        </div>
+    </div>
+    <div class="explore_bottom">
+        <div class="explore_bottom_right">
+            <div class="explore_img"></div>
+            <div class="explore_img"></div>
+            <div class="explore_img"></div>
+            <div class="explore_img"></div>
+            <div class="explore_img"></div>
+            <div class="explore_img"></div>
+        </div>
+        <div class="explore_bottom_left"></div>
+    </div>
+    <div class="explore_bottom_left fixed"></div>
+</div>
+
+
+{% endblock %}

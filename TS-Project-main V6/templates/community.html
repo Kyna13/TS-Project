@@ -1,0 +1,90 @@
+{% extends 'layout.html' %}
+{% block head %}
+    <title>Community</title>
+    <style>
+        .post{
+            width: 440px;
+            height: 300px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            z-index: 1;
+        }
+
+        .post_container{
+            position: relative;
+            height: 400px;
+            width: 450px;
+            text-align: center;
+            border: 0px black solid;
+            border-radius: 10px;
+            z-index: 0;
+        }
+
+        .image_text {
+            text-align: center;
+            height: 100px;
+            width: 440px;
+            position: absolute;
+            visibility: hidden;
+            color: #00000077;
+            padding: 10px;
+            z-index: 2;
+        }
+
+        .post_container:hover .image_text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .container{
+            background-color: #ffffff;
+            width: 80%;
+            margin-top: 110px;
+            margin-left: 5%;
+            margin-right: 5%;
+            padding: 1% 1%;
+            z-index: 1;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+
+    <div style="display: flex;">
+    {% for dct in rows %}
+        {% if dct['index'] % 3 == 0: %}
+        {% endif %}
+
+            <div class="post_container" style="float:left">
+                <div class="post" style="background-image: url({{ dct['post'] }});">
+                <div class="image_text">
+                    Title: {{ dct['title'] }}
+                    <br>
+                    Description: {{ dct['description'] }}
+                    <br>
+                    Price: {{ dct['price'] }}
+                </div>
+                </div>    
+            </div>
+
+    {% endfor %}
+    </div>
+    </div>
+
+</div>
+    
+    <script>
+        if (document.getElementById("conformation_text").innerHTML != ""){
+            document.getElementById("register_box").style.display = "none";
+            errors = document.getElementsByClassName("errors");
+            for (i = 0; i < errors.length; i++) {
+                errors[i].style.display = "none";
+            }
+            document.getElementById("conformation_button").style.display = "block";
+            document.getElementById("conformation_title").style.display = "block";
+            document.getElementById("conformation_text").style.display = "block";
+        }
+    </script>
+{% endblock %}
